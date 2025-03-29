@@ -1,0 +1,32 @@
+
+PrettyGoodOSINTProtocol/
+├── README.md
+├── requirements.txt
+├── .env.example
+├── docker/
+│   ├── Dockerfile
+│   └── docker-compose.yml
+├── deploy/
+│   ├── cloud-init.sh
+│   └── pgop.service
+├── app/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── core/
+│   │   ├── osint_engine.py
+│   │   ├── media_analyzer.py
+│   │   ├── social_scanner.py
+│   │   ├── blockchain_investigator.py
+│   │   ├── zk_privacy.py
+│   │   ├── publisher.py
+│   │   └── crypto_payments.py
+│   ├── cli/
+│   │   └── cli.py
+│   ├── ui/
+│   │   └── streamlit_app.py
+├── modules/
+│   └── sfp_osintprofile_ultimate.py
+├── data/
+│   └── reports/
+├── tests/
+│   └── test_core.py
