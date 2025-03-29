@@ -113,7 +113,5 @@ PGOP is already useful in offline mode, but with community funding we can:
 ---
 
 ### Links & Repo
-- GitHub: https://github.com/YOUR_USERNAME/Pretty-Good-OSINT-Protocol
-- Demo (Hugging Face): https://huggingface.co/spaces/YOUR_HF_USER/pgop-demo
-- Docs: /docs/
-- Roadmap: /docs/roadmap.md
+- GitHub: https://github.com/M0nkeyFl0wer/Pretty-Good-OSINT-Protocol
+
