@@ -25,7 +25,7 @@ PGOP is a modular, open-source intelligence platform designed to democratize acc
 
 ### 1. Clone this repo
 ```bash
-git clone https://github.com/YOUR_USERNAME/Pretty-Good-OSINT-Protocol.git
+git clone https://github.com/M0nkeyFl0wer/Pretty-Good-OSINT-Protocol.git
 cd Pretty-Good-OSINT-Protocol
 ```
 
