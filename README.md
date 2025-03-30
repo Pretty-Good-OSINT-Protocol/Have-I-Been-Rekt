@@ -29,7 +29,7 @@ git clone https://github.com/M0nkeyFl0wer/Pretty-Good-OSINT-Protocol.git
 cd Pretty-Good-OSINT-Protocol
 ```
 
-### 2. Add your API keys
+### 2. Add your API keys (note: this will be live when the project is available in BETA)
 Copy `.env.example` to `.env` and fill in:
 ```
 OPENAI_API_KEY=your-key
@@ -43,7 +43,6 @@ HUNTER_API_KEY=your-key
 docker-compose up --build
 ```
 
-Visit `http://localhost:8501` to launch the **“Have I Been Rekt”** web UI.
 
 ---
 
@@ -63,7 +62,7 @@ data/reports/          # Saved reports (CSV/JSON)
 
 ## 💡 Want to Contribute?
 
-Check out the [CONTRIBUTING.md](CONTRIBUTING.md) and [PGOP_Task_Board.md](PGOP_Task_Board.md) to get started.
+Check back soon as we will be creating and populating information here: [CONTRIBUTING.md](CONTRIBUTING.md) and [PGOP_Task_Board.md](PGOP_Task_Board.md) to get started.
 
 ---
 
@@ -74,7 +73,7 @@ Check out the [CONTRIBUTING.md](CONTRIBUTING.md) and [PGOP_Task_Board.md](PGOP_T
 
 ---
 
-## 🛠 Built With
+## 🛠 Building With
 
 - [SpiderFoot](https://github.com/smicallef/spiderfoot)
 - [OpenAI](https://openai.com/)
