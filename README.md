@@ -76,7 +76,7 @@ Check back soon as we will be creating and populating information here: [CONTRIB
 ## 🛠 Building With
 
 - [SpiderFoot](https://github.com/smicallef/spiderfoot)
-- [OpenAI](https://openai.com/)
+- [Open LLama](https://github.com/openlm-research/open_llama)
 - [Streamlit](https://streamlit.io/)
 - [IPFS](https://ipfs.io/)
 - [Orbit Chain](https://bridge.orbit.network/)
