@@ -24,7 +24,7 @@
 - [ ] Docker deployment setup
 - [ ] CI/CD with GitHub Actions
 - [ ] Test coverage for plugin_loader
-- [ ] Review grant proposal for final tweaks
+- [x] Review grant proposal for final tweaks
 
 ## Done
 - [x] PGOP repo created
