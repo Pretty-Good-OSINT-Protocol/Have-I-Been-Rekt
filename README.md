@@ -5,6 +5,12 @@
 
 PGOP is a modular, open-source intelligence platform designed to democratize access to advanced investigative tools for journalists, researchers, activists, and public-interest technologists. It combines OSINT, blockchain forensics, and AI-powered automation into one privacy-first, accessible toolkit.
 
+## 🚀 MVP Focus: Have I Been Rekt (May 2025)
+This MVP focuses on building a front-end experience where users can assess if their wallet has been compromised, optionally triggering deeper OSINT analysis and payment-based advanced tools.
+
+📄 [View full MVP plan and issues →](docs/mvp.md)
+
+
 ---
 
 ## 🌐 Features
@@ -21,30 +27,6 @@ PGOP is a modular, open-source intelligence platform designed to democratize acc
 
 ---
 
-## 🚀 Getting Started
-
-### 1. Clone this repo
-```bash
-git clone https://github.com/M0nkeyFl0wer/Pretty-Good-OSINT-Protocol.git
-cd Pretty-Good-OSINT-Protocol
-```
-
-### 2. Add your API keys (note: this will be live when the project is available in BETA)
-Copy `.env.example` to `.env` and fill in:
-```
-OPENAI_API_KEY=your-key
-SERPAPI_KEY=your-key
-WHOISXML_API_KEY=your-key
-HUNTER_API_KEY=your-key
-```
-
-### 3. Run locally with Docker
-```bash
-docker-compose up --build
-```
-
-
----
 
 ## 📦 Folder Structure
 
