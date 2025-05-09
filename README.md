@@ -7,28 +7,42 @@ PGOP is a modular, open-source intelligence platform designed to democratize acc
 
 # Have I Been Rekt
 
-**Have I Been Rekt** is a public interest, open-source crypto incident response tool designed to help users assess whether their wallet has been compromised. It provides a user-friendly interface to submit wallet information and receive a risk assessment based on on-chain activity and AI analysis.
+**Have I Been Rekt** is a public interest, open-source crypto incident response tool designed to help users assess whether their wallet has been compromised. It provides a user- is an open-source crypto incident response tool. It helps users determine if their wallet was compromised using open-source intelligence and self-hosted AI.
 
----
+### Core MVP Features
+- Wallet input form
+- AI-generated summary (local model via Ollama/llama.cpp)
+- Optional deeper report unlocked with payment
+- Consent-first interface and privacy disclaimer
+- Report output in human-readable format
 
-## 🛡️ Our Commitment to Privacy, Security & Fairness
+### Active Issues & Planning
+All development is tracked here:
+- [Issue Board](https://github.com/Pretty-Good-OSINT-Protocol/Have-I-Been-Rekt/issues)
+- [MVP Project Board](https://github.com/orgs/Pretty-Good-OSINT-Protocol/projects)
 
-This project is built around a simple but rare principle in Web3: **users deserve fairness, transparency, and control**.
+### Labeling System
+- `dev-task`: Developer-focused (backend, security, smart contracts)
+- `docs`: Documentation and educational materials
+- `deployment`: Hosting, CI/CD, infrastructure
+- `estimate:Xh`: Time estimates for budgeting and task planning
 
-- We don’t rely on cloud surveillance infrastructure like AWS by default.
-- We prioritize **self-hosted, privacy-respecting AI agents**.
-- We avoid third-party APIs unless absolutely necessary, and when used, they’re fully disclosed.
-- Our mission is **to democratize access to blockchain forensics**, support public interest investigations, and empower people who've been harmed by crypto fraud.
+### Cost Model
+- **Free Tier**: Local AI summary only (no outbound calls)
+- **Paid Tier**: Deeper OSINT reports via APIs, paid by user
+- This tool is designed to be sustainable and cost-neutral to the maintainer
 
-This is a nonprofit project focused on **community protection and education**, not data extraction.
+### Tech Stack
+- **Frontend**: React + TailwindCSS
+- **AI**: Self-hosted Mistral/Ollama (no OpenAI by default)
+- **Payments**: Stripe + WalletConnect (ETH/USDC)
+- **Infra**: CanHost (CA), Futo (US), optional Docker
+- **Dev Workflow**: GitHub CLI, Termux, PNPM, Node
 
-We’re building what Web3 didn’t expect: **accountability and empathy**.
-
----
-
-## 🚀 MVP Scope: Have I Been Rekt
-
-The MVP delivers a basic end-to-end investigation flow with the following features:
+### How to Contribute
+- Check issues labeled [`help wanted`](https://github.com/Pretty-Good-OSINT-Protocol/Have-I-Been-Rekt/issues?q=label%3A%22help+wanted%22)
+- Fork, branch, and submit pull requests
+- Respect privacy-first design—no analytics, no logs, no tracking
 
 ### Features
 
