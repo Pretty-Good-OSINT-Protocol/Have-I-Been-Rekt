@@ -1,99 +1,77 @@
-# Contributing to Pretty Good OSINT Protocol (PGOP)
+# Contributing to Have I Been Rekt (HIBR)
 
-Thanks for your interest in contributing to PGOP — a public good project focused on ethical, open-source intelligence.
+Welcome! We're building a public-interest crypto forensics tool designed to help users understand wallet compromise events using open-source intelligence and self-hosted AI.
 
-This guide outlines how to set up your environment, follow project standards, and submit high-quality contributions.
+Whether you're a developer, designer, researcher, red teamer, or crypto scam survivor—we’re glad you’re here.
 
 ---
 
-## 🚀 Quick Start
+## 🔧 Getting Started
 
-1. **Fork** this repository
-2. **Create a branch** for your feature or fix:
+1. **Fork the repo** and clone it to your machine:
+
    ```bash
-   git checkout -b feature/your-feature-name
+   git clone https://github.com/Pretty-Good-OSINT-Protocol/Have-I-Been-Rekt.git
+   cd Have-I-Been-Rekt
+   ```
 
-3. Install dependencies:
+2. **Install tools** (Node.js v18+, PNPM, GitHub CLI, optional Docker)
 
-pip install -r requirements.txt
+3. **Check the [project board](https://github.com/orgs/Pretty-Good-OSINT-Protocol/projects)** to see what's in progress
 
-
-4. Run tests:
-
-python -m unittest discover tests
-
-
-5. Make your changes
-
-
-6. Submit a pull request with a clear description
-
-
-
+4. **Look for issues labeled** [`help wanted`](https://github.com/Pretty-Good-OSINT-Protocol/Have-I-Been-Rekt/issues?q=is%3Aissue+label%3A%22help+wanted%22) or [`dev-task`](https://github.com/Pretty-Good-OSINT-Protocol/Have-I-Been-Rekt/issues?q=is%3Aissue+label%3A%22dev-task%22)
 
 ---
 
-🧪 Development Standards
+## 🛠️ Repo Roles & Labels
 
-Write clear, descriptive commit messages
+We use labels to track task type and who it’s for:
 
-Follow PEP8 style for Python code
+- `dev-task`: Feature development, integration, and backend work
+- `docs`: Writing/maintaining documentation or onboarding content
+- `help wanted`: Good first issues and contribution invites
+- `estimate:Xh`: Time estimate (for budgeting & prioritization)
+- `privacy`: Tasks related to user data and trust
+- `design`, `security`, `community`, `stretch`: Self-explanatory
 
-Use Black for formatting:
-
-black .
-
-Include tests for new features where possible
-
-Keep plugin code modular and well-documented
-
-
+If you’re unsure where to jump in, comment on an issue or ping [@M0nkeyFl0wer](https://github.com/M0nkeyFl0wer).
 
 ---
 
-🧩 Plugin Development
+## 🧪 Privacy & Ethics
 
-Plugins live in the /plugins directory. Each plugin should:
+This project is privacy-first and public-interest. That means:
 
-Be a standalone Python file or package
+- **No analytics, no logs, no silent tracking**
+- **All AI models run locally by default**
+- **All wallet or case data is treated as sensitive**
 
-Define a clear run() or analyze() method
-
-Include docstrings and usage examples
-
-Handle exceptions gracefully
-
-
-Plugins are loaded dynamically by plugin_loader.py.
-
+Never copy-paste sensitive user content into ChatGPT or other cloud tools. Always ask yourself: *“Would I be comfortable submitting this as a user?”*
 
 ---
 
-✅ Submitting a Pull Request
+## 💸 Compensation & Scope
 
-Once you're ready:
+Some contributors are funded through our MVP development budget. Others contribute on a volunteer basis.
 
-1. Push your branch:
+If you're unsure whether a task is paid or volunteer:
+- Open a quick issue comment or discussion
+- We’ll be transparent and collaborative in sorting it out
+- All contributors are acknowledged and appreciated
 
-git push origin feature/your-feature-name
-
-
-2. Go to your fork and submit a Pull Request to the main branch
-
-
-
-We’ll review your code, provide feedback if needed, and merge it once approved.
-
+We welcome code, documentation, research, testing, and outreach help.
 
 ---
 
-📫 Questions or Ideas?
+## 🚀 Submitting Changes
 
-Open an issue or start a discussion.
-
-Thanks again for helping build a more open, accessible OSINT future!
+- Fork → Branch → PR → Review
+- Reference the issue you’re solving (`Fixes #12`)
+- Keep commits atomic and descriptive
+- Include screenshots, test instructions, or logs if helpful
 
 ---
 
-Let me know once you’ve updated it, and I’ll help you publish this to the GitHub Pages site or offer a matching `CONTRIBUTING.md` stub for the root.
+## ✊ Thanks for Contributing
 
+You’re helping build a safer, more transparent Web3. Let’s make sure people have access to tools—not just scammers and VCs.
