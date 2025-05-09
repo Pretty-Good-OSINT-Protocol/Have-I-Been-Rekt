@@ -7,67 +7,84 @@ PGOP is a modular, open-source intelligence platform designed to democratize acc
 
 # Have I Been Rekt
 
-**Have I Been Rekt** is an open-source crypto incident response tool designed to help users assess whether their wallet has been compromised. It provides a user-friendly interface to submit wallet information and receive a risk assessment based on on-chain activity and AI analysis.
+**Have I Been Rekt** is a public interest, open-source crypto incident response tool designed to help users assess whether their wallet has been compromised. It provides a user-friendly interface to submit wallet information and receive a risk assessment based on on-chain activity and AI analysis.
+
+---
+
+## 🛡️ Our Commitment to Privacy, Security & Fairness
+
+This project is built around a simple but rare principle in Web3: **users deserve fairness, transparency, and control**.
+
+- We don’t rely on cloud surveillance infrastructure like AWS by default.
+- We prioritize **self-hosted, privacy-respecting AI agents**.
+- We avoid third-party APIs unless absolutely necessary, and when used, they’re fully disclosed.
+- Our mission is **to democratize access to blockchain forensics**, support public interest investigations, and empower people who've been harmed by crypto fraud.
+
+This is a nonprofit project focused on **community protection and education**, not data extraction.
+
+We’re building what Web3 didn’t expect: **accountability and empathy**.
+
+---
 
 ## 🚀 MVP Scope: Have I Been Rekt
 
-The goal of this MVP is to deliver a functional, crypto-native incident response tool that enables users to determine if their wallet has been compromised. The MVP includes:
+The MVP delivers a basic end-to-end investigation flow with the following features:
 
 ### Features
 
-- **Wallet Compromise Form**: Front-end form to collect user symptoms (address, time of loss, description)
+- **Wallet Compromise Form**: Front-end form to collect user symptoms (wallet address, time of loss, description)
 - **Input Validation**: Regex-based wallet format check and required fields
-- **Privacy Notice**: User consent checkbox with legal disclaimer
-- **Deployment**: Hosted on Vercel or AWS with `.env` support
-- **API Endpoint**: Backend route to receive and process submissions
-- **AI Integration**: Use OpenAI GPT to summarize wallet behavior and likely attack vector
-- **Wallet Connect**: Support for wagmi or web3modal to connect directly
-- **Payment Gateway**: Stripe and/or on-chain (ETH, USDC) payments
-- **OSINT Report Access**: Premium report gated behind payment
-- **README + Study Guide**: Clear contributor onboarding and system diagram
-- **Community Testing**: Feedback loop and real-world validation
+- **Privacy Notice**: User consent checkbox with disclaimer
+- **Deployment**: Hosted on Vercel or privacy-first alt-host (CanHost, Hetzner, etc.)
+- **API Endpoint**: Receives and processes form submissions
+- **Self-Hosted AI Integration**: Uses Ollama + local LLMs to summarize likely attack vector
+- **Wallet Connect**: Enables direct wallet linking using wagmi/web3modal
+- **Payment Gateway**: Stripe and/or on-chain payments (USDC, ETH)
+- **Report Access**: Gate OSINT output behind confirmed payment
+- **README + Study Guide**: Contributor documentation for onboarding
+- **Community Testing**: Feedback channels and opt-in usage analytics
 
 ---
 
 ## 🧪 Future Scope & Stretch Goals
 
-Post-MVP development plans include:
-
-- **SpiderFoot Plugin**: Full integration with SpiderFoot for advanced OSINT
-- **AI Agent (KINT)**: Open-source autonomous wallet forensics agent
-- **Multimedia Analysis**: ExifTool, geolocation, image matching
-- **Blockchain Forensics**: Path tracing via Etherscan, Bitquery, and custom heuristics
-- **Privacy Tools**: Optional redaction using ZK tools like Holonym
-- **Immutable Publishing**: IPFS, OrbitDB, and verifiable audit logs
-- **CLI + GUI**: Expand beyond form-based access to a full OSINT toolkit
-- **Crypto + Fiat Payments**: Multi-chain payments and privacy-preserving invoicing
-- **Collaboration Tools**: Sub-issue tracking, saved investigations, team access
-
-This roadmap represents our commitment to open infrastructure for blockchain safety and transparency.
+- **SpiderFoot Plugin** for deep passive OSINT
+- **KINT**: a self-hosted AI agent for automated wallet forensics
+- **Blockchain Tracing** via Etherscan, Bitquery, and heuristics
+- **Privacy Enhancements**: ZK redaction via Holonym, encrypted submissions
+- **Immutable Reports**: IPFS/OrbitDB export + audit trail
+- **Offline and CLI Modes**: For use in high-censorship or private environments
+- **Multi-chain Payment Support**: Monero, zkUSD, BTC Lightning, etc.
+- **Public Interest Toolkits**: Exportable reporting for police, exchanges, and media
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **Frontend**: React, Tailwind CSS
-- **Backend**: Node.js, Express
-- **AI Integration**: OpenAI GPT API
-- **Blockchain Interaction**: wagmi, web3modal
-- **Payments**: Stripe API, Ethereum smart contracts
-- **Deployment**: Vercel, AWS
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
+- **Backend**: Node.js or Express-compatible API (or Vercel Functions)
+- **AI Integration**: Self-hosted Ollama, LLaMA, Mistral or GGUF models
+- **Blockchain Connect**: wagmi, web3modal
+- **Payments**: Stripe API, Ethereum-compatible smart contracts
+- **Deployment**: CanHost, Hetzner, or any Docker/VPS stack
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request for any improvements or suggestions.
+We welcome anyone who wants to help make Web3 safer, fairer, and more transparent. Whether you're a dev, designer, translator, or survivor of a crypto scam — you're welcome here.
 
+---
+
+## 📄 License
+
+MIT — because everyone deserves tools that fight back.
+
+---
+
+## 📫 Contact
+
+Questions, ideas, or feedback? DM [@M0nkeyFl0wer](https://github.com/M0nkeyFl0wer) or open an issue.
 
 ## 🛠 Building With
 
