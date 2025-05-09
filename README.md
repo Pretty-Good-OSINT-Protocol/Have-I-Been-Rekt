@@ -5,55 +5,69 @@
 
 PGOP is a modular, open-source intelligence platform designed to democratize access to advanced investigative tools for journalists, researchers, activists, and public-interest technologists. It combines OSINT, blockchain forensics, and AI-powered automation into one privacy-first, accessible toolkit.
 
-## 🚀 MVP Focus: Have I Been Rekt (May 2025)
-This MVP focuses on building a front-end experience where users can assess if their wallet has been compromised, optionally triggering deeper OSINT analysis and payment-based advanced tools.
+# Have I Been Rekt
 
-📄 [View full MVP plan and issues →](docs/mvp.md)
+**Have I Been Rekt** is an open-source crypto incident response tool designed to help users assess whether their wallet has been compromised. It provides a user-friendly interface to submit wallet information and receive a risk assessment based on on-chain activity and AI analysis.
 
+## 🚀 MVP Scope: Have I Been Rekt
 
----
+The goal of this MVP is to deliver a functional, crypto-native incident response tool that enables users to determine if their wallet has been compromised. The MVP includes:
 
-## 🌐 Features
+### Features
 
-- **🔎 OSINT Engine** – Automated profiling with SpiderFoot + enhanced modules
-- **🧠 AI Assistant** – Summarize scans, classify targets, and suggest next steps using OpenAI, Claude, and more
-- **🖼 Multimedia Analysis** – ExifTool, facial similarity, image geolocation
-- **🔗 Blockchain Forensics** – Wallet & contract tracing using Etherscan, Bitquery, Web3
-- **📦 Immutable Reporting** – Publish findings to IPFS + Orbit Chain or Base
-- **🕵️ Privacy Layer** – Optional zero-knowledge redaction using Holonym
-- **💱 Crypto Payments** – Pay for API services using cryptocurrency
-- **🧰 CLI + Web UI** – Power-user CLI & beginner-friendly Streamlit GUI
-- **🧪 Optional Non-Web3 Mode** – No blockchain storage, local-only reports
-
----
-
-
-## 📦 Folder Structure
-
-```
-app/
-├── core/              # OSINT, blockchain, AI modules
-├── ui/                # Streamlit GUI
-├── cli/               # Command-line tool
-modules/               # SpiderFoot plugins
-deploy/                # Cloud-init, Docker, automation
-data/reports/          # Saved reports (CSV/JSON)
-```
+- **Wallet Compromise Form**: Front-end form to collect user symptoms (address, time of loss, description)
+- **Input Validation**: Regex-based wallet format check and required fields
+- **Privacy Notice**: User consent checkbox with legal disclaimer
+- **Deployment**: Hosted on Vercel or AWS with `.env` support
+- **API Endpoint**: Backend route to receive and process submissions
+- **AI Integration**: Use OpenAI GPT to summarize wallet behavior and likely attack vector
+- **Wallet Connect**: Support for wagmi or web3modal to connect directly
+- **Payment Gateway**: Stripe and/or on-chain (ETH, USDC) payments
+- **OSINT Report Access**: Premium report gated behind payment
+- **README + Study Guide**: Clear contributor onboarding and system diagram
+- **Community Testing**: Feedback loop and real-world validation
 
 ---
 
-## 💡 Want to Contribute?
+## 🧪 Future Scope & Stretch Goals
 
-Check back soon as we will be creating and populating information here: [CONTRIBUTING.md](CONTRIBUTING.md) and [PGOP_Task_Board.md](PGOP_Task_Board.md) to get started.
+Post-MVP development plans include:
+
+- **SpiderFoot Plugin**: Full integration with SpiderFoot for advanced OSINT
+- **AI Agent (KINT)**: Open-source autonomous wallet forensics agent
+- **Multimedia Analysis**: ExifTool, geolocation, image matching
+- **Blockchain Forensics**: Path tracing via Etherscan, Bitquery, and custom heuristics
+- **Privacy Tools**: Optional redaction using ZK tools like Holonym
+- **Immutable Publishing**: IPFS, OrbitDB, and verifiable audit logs
+- **CLI + GUI**: Expand beyond form-based access to a full OSINT toolkit
+- **Crypto + Fiat Payments**: Multi-chain payments and privacy-preserving invoicing
+- **Collaboration Tools**: Sub-issue tracking, saved investigations, team access
+
+This roadmap represents our commitment to open infrastructure for blockchain safety and transparency.
 
 ---
 
-## 🧭 Project Vision
+## 🛠️ Tech Stack
 
-> To give the public access to high-integrity intelligence tools—open, ethical, and secure.  
-> Whether you're a journalist, researcher, DAO delegate, or just OSINT-curious, PGOP is built to empower you.
+- **Frontend**: React, Tailwind CSS
+- **Backend**: Node.js, Express
+- **AI Integration**: OpenAI GPT API
+- **Blockchain Interaction**: wagmi, web3modal
+- **Payments**: Stripe API, Ethereum smart contracts
+- **Deployment**: Vercel, AWS
 
 ---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or suggestions.
+
 
 ## 🛠 Building With
 
