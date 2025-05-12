@@ -1,67 +1,54 @@
-# 🛣️ Project Roadmap: Have I Been Rekt (2025)
+🛣️ Project Roadmap: Have I Been Rekt (2025)
+A living roadmap for the development of the Have I Been Rekt (HIBR) platform within the Pretty Good OSINT Protocol (PGOP) ecosystem.
 
-A living roadmap for the development of the **Have I Been Rekt** (HIBR) platform within the Pretty Good OSINT Protocol (PGOP) ecosystem.
+✅ Phase 0 – Foundation
+- GitHub repo setup (under PGOP org)
+- Initial planning, architecture sketch, role alignment
+- README and contributor onboarding docs
+- Labeling conventions, master-task system, CLI tooling begins
 
----
+🚀 Phase 1 – MVP Delivery (May 2025)
+**Goal**: A working, privacy-first crypto incident response tool with frontend and backend components.
 
-## ✅ Phase 0 – Foundation
-- [x] GitHub repo setup (under PGOP org)
-- [x] Initial planning, role assignment, and architecture sketch
-- [x] README and documentation organization
+🎯 Features
+- TypeScript React form for wallet compromise symptoms
+- Regex/Zod validation, privacy notice, and consent checkbox
+- Backend API endpoint to receive and log submissions
+- Wallet Connect integration via wagmi/web3modal
+- GitHub Issues for dev tracking (Project archived)
+- `PROJECT_STATUS.md` Kanban with CLI sync
 
----
+🧠 Dev Tools
+- Termux + GitHub CLI + Windsurfer dev environment
+- PowerShell script to bulk-edit issues and sync project snapshot
+- Consolidated `master-task` structure for milestone tracking
 
-## 🚧 Phase 1 – MVP Launch (May 2025)
-Goal: A usable front-end tool that helps users assess whether their wallet has been compromised.
+🔮 Phase 2 – AI & Payments (June–July 2025)
+**Goal**: Add backend intelligence + gated payments for deeper scan output
 
-### 🎯 Features
-- [ ] Web-based form UX for compromised wallet symptoms
-- [ ] Optional wallet address input
-- [ ] Frontend validation and privacy notice
-- [ ] Thank-you screen with placeholder output or basic advice
-- [ ] GitHub Project board and issue tracking
+🧠 AI Integration
+- Ollama self-hosted GPT model (e.g., Mistral) for wallet risk summary
+- Prompt design and JSON schema output
+- API bridge from frontend to AI inference
 
-### 🧠 Dependencies
-- [ ] Domain + hosting (Vercel, Netlify, etc.)
-- [ ] MVP backend shell (KINT v0.1 API endpoint)
-- [ ] Link to PGOP plugin system (stub only if needed)
+💸 Payment UX
+- Stripe and/or ETH/USDC payments
+- Premium scan gating (paid access only)
+- Post-payment result rendering
 
----
+🌍 Phase 3 – Community & Outreach (Q3 2025)
+**Goal**: Enable contribution, testing, and expansion
 
-## 🔮 Phase 2 – AI & Payment Integration
-Goal: Add backend intelligence + gated crypto payments
+- Onboarding docs for contributors (Termux, Windsurfer, Cursor)
+- Feedback flow for wallet reports and scan accuracy
+- Community testing + red team feedback loop
+- Partner outreach, Discord onboarding
 
-### 🧠 KINT AI Tooling
-- [ ] Risk analysis heuristics and GPT-based summary prompts
-- [ ] API connection between frontend and backend
-- [ ] Results templating and helpful output
+🧪 Future Ideas (Backlog)
+- Telegram/Discord address threat monitoring
+- SpiderFoot and Maltego plugin bridges
+- Holonym/ZK redaction mode
+- Non-Web3 wallet mode for mobile/email users
+- Immutable report storage (IPFS or OrbitDB)
 
-### 💸 Payment UX
-- [ ] Wallet connect
-- [ ] Payment modal for premium scan (ETH/USDC)
-- [ ] Advanced scan gating logic
-- [ ] Post-payment result enhancement
-
----
-
-## 🌐 Phase 3 – Community & Growth
-Goal: Engage users and improve usability
-
-- [ ] Contributor onboarding flow
-- [ ] Feature request tracking
-- [ ] MVP user feedback collection
-- [ ] Social outreach + branding pass
-
----
-
-## 🧪 Future Ideas (Backlog)
-- Telegram/Discord monitoring
-- On-chain reputation indicators
-- Maltego plugin export
-- Immutable report storage (IPFS or Orbit Chain)
-- Holonym/ZK integration
-- Non-Web3 mode
-
----
-
-Last updated: May 2025
+_Last updated: May 2025_
