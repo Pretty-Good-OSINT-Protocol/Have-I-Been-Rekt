@@ -53,6 +53,15 @@ All planning and development is tracked transparently:
 - **Payments**: Stripe API + WalletConnect (ETH, USDC)
 - **Deployment**: CanHost (CA), Futo (US), or Docker-ready
 
+## Deployment Strategy
+
+This project uses a hybrid deployment approach:
+
+- **Initial MVP** runs on OpenAI + Supabase + Vercel for rapid iteration
+- **Long-term migration** targets a self-hosted stack using tools like Ollama, Postgres, and CanHost
+
+See [`MVP-Deployment-Plan.md`](./MVP-Deployment-Plan.md) for the full architecture and migration strategy.
+
 ---
 
 ## Local Dev Setup
