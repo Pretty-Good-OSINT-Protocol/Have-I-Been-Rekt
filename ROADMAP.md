@@ -10,6 +10,20 @@ A living roadmap for the development of the Have I Been Rekt (HIBR) platform wit
 🚀 Phase 1 – MVP Delivery (May 2025)
 **Goal**: A working, privacy-first crypto incident response tool with frontend and backend components.
 
+## Deployment Roadmap
+
+### MVP Launch (Hosted)
+- [x] Integrate with OpenAI API
+- [x] Connect to Supabase/Firebase for basic backend
+- [x] Deploy static front end via Vercel or Netlify
+- [ ] Enable early user testing
+
+### Migration Phase (Self-Hosted)
+- [ ] Swap OpenAI for local Ollama model
+- [ ] Replace Supabase with local Postgres instance
+- [ ] Implement Docker-based deployment
+- [ ] Test on CanHost or local VM setup
+
 🎯 Features
 - TypeScript React form for wallet compromise symptoms
 - Regex/Zod validation, privacy notice, and consent checkbox
