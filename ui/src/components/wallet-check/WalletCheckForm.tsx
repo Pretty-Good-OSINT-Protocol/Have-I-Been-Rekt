@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
@@ -31,22 +30,43 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { isAddress } from "ethers";
 
-const formSchema = z.object({
-  walletAddress: z
-    .string()
-    .min(1, "Wallet address is required")
-    .regex(/^0x[a-fA-F0-9]{40}$/, "Please enter a valid ETH address format"),
-  incidentDate: z.date().optional(),
-  description: z.string().min(1, "Please describe what happened"),
-  knownScamURL: z.string().optional(),
-  scammerContact: z.string().optional(),
-  contactEmail: z.string().email("Please enter a valid email").optional(),
-  optInToFollowUp: z.boolean().optional(),
-  consent: z.boolean().refine(val => val === true, {
-    message: "You must agree to continue",
-  }),
-});
+const formSchema = z
+  .object({
+    walletAddress: z
+      .string()
+      .min(1, "Wallet address is required")
+      .refine((val) => isAddress(val), {
+        message: "Please enter a valid ETH address",
+      }),
+    incidentDate: z.date().optional(),
+    description: z.string().min(1, "Please describe what happened"),
+    knownScamURL: z.string().optional(),
+    scammerContact: z.string().optional(),
+    contactEmail: z.string().optional(),
+    optInToFollowUp: z.boolean().optional(),
+    consent: z.boolean().refine((val) => val === true, {
+      message: "You must agree to continue",
+    }),
+  })
+  .superRefine((data, ctx) => {
+    if (data.optInToFollowUp) {
+      if (!data.contactEmail) {
+        ctx.addIssue({
+          path: ["contactEmail"],
+          code: z.ZodIssueCode.custom,
+          message: "Contact email is required if you opt in to follow-up",
+        });
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.contactEmail)) {
+        ctx.addIssue({
+          path: ["contactEmail"],
+          code: z.ZodIssueCode.custom,
+          message: "Please enter a valid email",
+        });
+      }
+    }
+  });
 
 export type WalletFormData = z.infer<typeof formSchema>;
 
@@ -73,7 +93,7 @@ export function WalletCheckForm({ onFormSubmit }: WalletCheckFormProps) {
   function onSubmit(data: WalletFormData) {
     toast.info("Form submitted, analyzing your wallet...");
     console.log("Form data:", data);
-    
+
     // Here you would typically make an API call
     // For the MVP, we'll just pass the data to the parent component
     onFormSubmit(data);
@@ -199,9 +219,7 @@ export function WalletCheckForm({ onFormSubmit }: WalletCheckFormProps) {
             name="scammerContact"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>
-                  Scammer Contact Information (optional)
-                </FormLabel>
+                <FormLabel>Scammer Contact Information (optional)</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Social accounts, email, etc."
@@ -269,15 +287,15 @@ export function WalletCheckForm({ onFormSubmit }: WalletCheckFormProps) {
                   />
                 </FormControl>
                 <FormLabel className="font-normal">
-                  I understand that this tool uses local AI and is for educational
-                  purposes only.
+                  I understand that this tool uses local AI and is for
+                  educational purposes only.
                 </FormLabel>
               </FormItem>
             )}
           />
 
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             className="w-full neo-brutalism bg-hibr-accent text-black hover:bg-hibr-secondary hover:shadow-[4px_4px_0px_0px_rgba(255,52,179,0.8)]"
           >
             Check My Wallet
