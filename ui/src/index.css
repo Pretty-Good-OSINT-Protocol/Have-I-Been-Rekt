@@ -1,0 +1,87 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 5%;
+    --foreground: 210 20% 98%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 95.1%;
+
+    --primary: 183 100% 50%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 326 100% 60%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+
+    --accent: 183 100% 50%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 183 100% 50%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    @apply bg-hibr-bg text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  body {
+    background: 
+      radial-gradient(circle at 50% 0%, rgba(0, 229, 255, 0.2), transparent 50%),
+      radial-gradient(circle at 90% 70%, rgba(255, 52, 179, 0.15), transparent 40%),
+      #0a0e17;
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4 md:px-6;
+  }
+
+  .neo-brutalism {
+    @apply border-2 border-hibr-accent shadow-[4px_4px_0px_0px_rgba(0,229,255,0.8)];
+  }
+
+  .cyber-input {
+    @apply bg-hibr-bg border-hibr-accent focus:border-hibr-secondary transition-all duration-300;
+  }
+
+  .cyber-button {
+    @apply bg-hibr-accent hover:bg-hibr-secondary text-black font-bold py-2 px-4 transition-colors duration-300;
+  }
+
+  .chat-bubble {
+    @apply my-2 p-3 rounded-xl max-w-[85%] relative overflow-hidden;
+  }
+
+  .chat-bubble-ai {
+    @apply bg-hibr-muted text-white ml-2;
+  }
+
+  .chat-bubble-user {
+    @apply bg-hibr-accent text-black mr-2 ml-auto;
+  }
+}
