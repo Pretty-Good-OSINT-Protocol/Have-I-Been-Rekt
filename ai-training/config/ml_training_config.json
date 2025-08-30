@@ -1,0 +1,72 @@
+{
+  "data_sources": {
+    "hibp_api_key": null,
+    "virustotal_api_key": null,
+    "chainalysis_api_key": null,
+    "ransomwhere_data_path": "./data/ransomwhere.csv",
+    "elliptic_dataset_path": "./data/elliptic",
+    "tagpack_dir": "./data/tagpacks",
+    "cache_dir": "./cache"
+  },
+  "training": {
+    "test_size": 0.2,
+    "validation_size": 0.2,
+    "random_state": 42,
+    "cross_validation_folds": 5,
+    "hyperparameter_tuning": true,
+    "class_balancing": true,
+    "enable_ensemble": true,
+    "model_output_dir": "./models",
+    "performance_threshold": {
+      "accuracy": 0.9,
+      "precision": 0.85,
+      "recall": 0.95,
+      "f1_score": 0.9
+    }
+  },
+  "feature_engineering": {
+    "enable_composite_features": true,
+    "enable_temporal_features": true,
+    "enable_text_features": true,
+    "feature_selection_threshold": 0.01
+  },
+  "evaluation": {
+    "enable_shap_analysis": true,
+    "enable_plots": true,
+    "plot_format": "png",
+    "evaluation_output_dir": "./evaluation_results"
+  },
+  "risk_scoring": {
+    "enable_ml_scoring": true,
+    "enable_explanation": true,
+    "confidence_threshold": 0.7,
+    "source_weights": {
+      "GOVERNMENT": 1.0,
+      "LAW_ENFORCEMENT": 0.95,
+      "CRIME_DATABASE": 0.9,
+      "COMMERCIAL": 0.8,
+      "COMMUNITY": 0.7,
+      "BEHAVIORAL_ANALYSIS": 0.6,
+      "OPEN_SOURCE": 0.5,
+      "INTERNAL": 0.4
+    }
+  },
+  "output": {
+    "model_output_dir": "./models",
+    "evaluation_output_dir": "./evaluation_results",
+    "training_data_export": "./data/training_data.csv",
+    "logs_dir": "./logs"
+  },
+  "deployment": {
+    "huggingface_hub": {
+      "enabled": false,
+      "repo_name": "have-i-been-rekt/crypto-risk-models",
+      "private": true
+    },
+    "model_serving": {
+      "inference_timeout": 5,
+      "batch_size": 32,
+      "enable_monitoring": true
+    }
+  }
+}
