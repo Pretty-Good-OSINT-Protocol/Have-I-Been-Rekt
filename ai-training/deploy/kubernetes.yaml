@@ -1,0 +1,181 @@
+# Kubernetes deployment for Have I Been Rekt AI Analysis API
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hibr-ai-api
+  labels:
+    app: hibr-ai-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hibr-ai-api
+  template:
+    metadata:
+      labels:
+        app: hibr-ai-api
+    spec:
+      containers:
+      - name: api
+        image: hibr-ai-api:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: REDIS_URL
+          value: "redis://redis-service:6379"
+        - name: HIBP_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: api-secrets
+              key: hibp-api-key
+        - name: VIRUSTOTAL_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: api-secrets
+              key: virustotal-api-key
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: api-secrets
+              key: secret-key
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        volumeMounts:
+        - name: cache-volume
+          mountPath: /app/cache
+        - name: models-volume
+          mountPath: /app/models
+      volumes:
+      - name: cache-volume
+        persistentVolumeClaim:
+          claimName: hibr-cache-pvc
+      - name: models-volume
+        persistentVolumeClaim:
+          claimName: hibr-models-pvc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hibr-ai-api-service
+spec:
+  selector:
+    app: hibr-ai-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: LoadBalancer
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: api-secrets
+type: Opaque
+data:
+  hibp-api-key: # Base64 encoded API key
+  virustotal-api-key: # Base64 encoded API key
+  chainalysis-api-key: # Base64 encoded API key
+  secret-key: # Base64 encoded secret key
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:7-alpine
+        ports:
+        - containerPort: 6379
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "200m"
+        volumeMounts:
+        - name: redis-data
+          mountPath: /data
+      volumes:
+      - name: redis-data
+        persistentVolumeClaim:
+          claimName: redis-pvc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+spec:
+  selector:
+    app: redis
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hibr-cache-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hibr-models-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

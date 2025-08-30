@@ -1,0 +1,438 @@
+/* AnalysisResultCard.css - Styles for the AI analysis result component */
+
+.analysis-result-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid #e5e7eb;
+  transition: box-shadow 0.2s ease;
+}
+
+.analysis-result-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Section */
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.address-info {
+  flex: 1;
+}
+
+.address {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 8px 0;
+  word-break: break-all;
+}
+
+.analysis-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.cached-badge {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.processing-time {
+  background: #f3f4f6;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.risk-summary {
+  text-align: center;
+  min-width: 100px;
+}
+
+.risk-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.risk-icon {
+  font-size: 28px;
+}
+
+.risk-level {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Risk Assessment */
+.risk-assessment {
+  margin-bottom: 20px;
+}
+
+.risk-bar {
+  height: 8px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.risk-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.risk-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Primary Concerns */
+.primary-concerns {
+  margin-bottom: 20px;
+}
+
+.primary-concerns h4 {
+  font-size: 16px;
+  color: #1f2937;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+}
+
+.concerns-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.concern-tag {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Recommendations */
+.recommendations {
+  margin-bottom: 20px;
+}
+
+.recommendations h4 {
+  font-size: 16px;
+  color: #1f2937;
+  margin: 0 0 16px 0;
+  font-weight: 600;
+}
+
+.recommendation {
+  border-left: 4px solid #d1d5db;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  background: #f9fafb;
+  border-radius: 0 8px 8px 0;
+}
+
+.recommendation.priority-low {
+  border-left-color: #10b981;
+  background: #ecfdf5;
+}
+
+.recommendation.priority-medium {
+  border-left-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.recommendation.priority-high {
+  border-left-color: #ef4444;
+  background: #fef2f2;
+}
+
+.recommendation.priority-critical {
+  border-left-color: #7c2d12;
+  background: #fef2f2;
+}
+
+.rec-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.rec-action {
+  font-weight: 600;
+  color: #1f2937;
+  text-transform: capitalize;
+}
+
+.rec-priority {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.priority-low .rec-priority {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.priority-medium .rec-priority {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.priority-high .rec-priority {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.priority-critical .rec-priority {
+  background: #fecaca;
+  color: #7f1d1d;
+}
+
+.rec-description {
+  color: #4b5563;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.rec-reason {
+  font-size: 14px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Explanation */
+.explanation {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.explanation h4 {
+  font-size: 16px;
+  color: #1f2937;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+}
+
+.explanation p {
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Data Sources */
+.data-sources {
+  margin-bottom: 20px;
+}
+
+.data-sources h4 {
+  font-size: 16px;
+  color: #1f2937;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+}
+
+.sources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.source-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.source-item.found {
+  background: #ecfdf5;
+  color: #065f46;
+}
+
+.source-item.not-found {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.source-name {
+  text-transform: capitalize;
+}
+
+.source-status {
+  font-weight: 600;
+}
+
+.source-confidence {
+  font-size: 12px;
+  font-family: monospace;
+}
+
+/* Detailed Results */
+.detailed-results {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.attribution-details,
+.crime-history {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.attribution-details h4,
+.crime-history h4 {
+  font-size: 16px;
+  color: #1f2937;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+}
+
+.attribution-content div,
+.crime-content div {
+  margin-bottom: 8px;
+  color: #4b5563;
+}
+
+/* Actions */
+.result-actions {
+  display: flex;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.result-actions button {
+  padding: 8px 16px;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.result-actions button:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.reanalyze-button {
+  background: #3b82f6 !important;
+  color: white !important;
+  border-color: #3b82f6 !important;
+}
+
+.reanalyze-button:hover {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+.show-all-recommendations {
+  background: none !important;
+  border: none !important;
+  color: #3b82f6;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 8px 0;
+  margin-top: 8px;
+}
+
+.show-all-recommendations:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+/* Raw Data */
+.raw-data {
+  margin-top: 20px;
+  padding: 16px;
+  background: #1f2937;
+  border-radius: 8px;
+}
+
+.raw-data h4 {
+  color: white;
+  margin: 0 0 12px 0;
+  font-size: 14px;
+}
+
+.raw-data pre {
+  background: #111827;
+  color: #e5e7eb;
+  padding: 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .result-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .risk-summary {
+    align-self: flex-start;
+  }
+
+  .sources-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-actions {
+    flex-direction: column;
+  }
+
+  .analysis-result-card {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+}
