@@ -22,6 +22,10 @@ from .elliptic_dataset_processor import EllipticDatasetProcessor
 from .virustotal_client import VirusTotalClient
 from .dehashed_client import DeHashedClient
 from .shodan_client import ShodanClient
+from .elliptic_plus_processor import EllipticPlusProcessor
+from .elliptic2_processor import Elliptic2Processor
+from .ethereum_dataset_processor import EthereumDatasetProcessor
+from .huggingface_datasets import HuggingFaceDatasetManager
 
 
 class HistoricalCrimeAggregator(BaseDataCollector, LoggingMixin):
@@ -41,6 +45,12 @@ class HistoricalCrimeAggregator(BaseDataCollector, LoggingMixin):
         self.virustotal_client = VirusTotalClient(config, cache_dir, logger)
         self.dehashed_client = DeHashedClient(config, cache_dir, logger)
         self.shodan_client = ShodanClient(config, cache_dir, logger)
+        
+        # Enhanced Elliptic and Ethereum dataset processors
+        self.elliptic_plus = EllipticPlusProcessor(config, cache_dir, logger)
+        self.elliptic2 = Elliptic2Processor(config, cache_dir, logger)
+        self.ethereum_datasets = EthereumDatasetProcessor(config, cache_dir, logger)
+        self.huggingface_manager = HuggingFaceDatasetManager(config, cache_dir, logger)
         
         # Track available sources
         self.available_sources = self._check_available_sources()
@@ -84,6 +94,21 @@ class HistoricalCrimeAggregator(BaseDataCollector, LoggingMixin):
         # Shodan requires API key
         if self.shodan_client.is_configured():
             sources.add('shodan')
+        
+        # Enhanced Elliptic datasets
+        if self.elliptic_plus.is_configured():
+            sources.add('elliptic_plus')
+        
+        if self.elliptic2.is_configured():
+            sources.add('elliptic2')
+        
+        # Ethereum datasets
+        if self.ethereum_datasets.is_configured():
+            sources.add('ethereum_datasets')
+        
+        # HuggingFace datasets
+        if self.huggingface_manager.is_configured():
+            sources.add('huggingface_datasets')
         
         return sources
     
@@ -154,6 +179,10 @@ class HistoricalCrimeAggregator(BaseDataCollector, LoggingMixin):
             'elliptic_result': None,
             'virustotal_result': None,
             'shodan_result': None,
+            'elliptic_plus_result': None,
+            'elliptic2_result': None,
+            'ethereum_result': None,
+            'huggingface_result': None,
             'aggregated_assessment': {
                 'is_criminal_address': False,
                 'criminal_activities': [],
@@ -235,6 +264,80 @@ class HistoricalCrimeAggregator(BaseDataCollector, LoggingMixin):
                 
             except Exception as e:
                 self.logger.error("Shodan infrastructure lookup failed", error=str(e))
+        
+        # Collect Elliptic++ data (enhanced Bitcoin/crypto analysis)
+        if 'elliptic_plus' in self.available_sources:
+            try:
+                elliptic_plus_data = self.elliptic_plus.lookup_address(address)
+                results['elliptic_plus_result'] = elliptic_plus_data
+                results['sources_checked'].append('elliptic_plus')
+                
+                if elliptic_plus_data and elliptic_plus_data.get('found_elliptic_data'):
+                    results['aggregated_assessment']['analysis_sources'].append('elliptic_plus')
+                    
+                    # Illicit classification is high confidence criminal activity
+                    classification = elliptic_plus_data.get('elliptic_classification', {})
+                    if classification.get('label') == 'illicit':
+                        results['criminal_activity_found'] = True
+                
+            except Exception as e:
+                self.logger.error("Elliptic++ lookup failed", error=str(e))
+        
+        # Collect Elliptic2 money laundering analysis
+        if 'elliptic2' in self.available_sources:
+            try:
+                elliptic2_data = self.elliptic2.lookup_address(address)
+                results['elliptic2_result'] = elliptic2_data
+                results['sources_checked'].append('elliptic2')
+                
+                if elliptic2_data and elliptic2_data.get('found_elliptic2_data'):
+                    results['aggregated_assessment']['analysis_sources'].append('elliptic2')
+                    
+                    # Money laundering patterns indicate criminal activity
+                    ml_analysis = elliptic2_data.get('money_laundering_analysis', {})
+                    if ml_analysis.get('risk_classification') in ['high_risk', 'medium_risk']:
+                        results['criminal_activity_found'] = True
+                
+            except Exception as e:
+                self.logger.error("Elliptic2 lookup failed", error=str(e))
+        
+        # Collect Ethereum ecosystem data (prioritized for Ethereum addresses)
+        if 'ethereum_datasets' in self.available_sources:
+            try:
+                ethereum_data = self.ethereum_datasets.lookup_address(address)
+                results['ethereum_result'] = ethereum_data
+                results['sources_checked'].append('ethereum_datasets')
+                
+                if ethereum_data and ethereum_data.get('found_ethereum_data'):
+                    results['aggregated_assessment']['analysis_sources'].append('ethereum_datasets')
+                    
+                    # Ethereum fraud detection or critical vulnerabilities
+                    fraud_analysis = ethereum_data.get('fraud_analysis', {})
+                    vuln_analysis = ethereum_data.get('vulnerability_analysis', {})
+                    
+                    if (fraud_analysis.get('has_fraud_records') or 
+                        vuln_analysis.get('severity_breakdown', {}).get('critical', 0) > 0):
+                        results['criminal_activity_found'] = True
+                
+            except Exception as e:
+                self.logger.error("Ethereum datasets lookup failed", error=str(e))
+        
+        # Collect HuggingFace smart contract intelligence
+        if 'huggingface_datasets' in self.available_sources:
+            try:
+                hf_data = self.huggingface_manager.search_contract_by_address(address)
+                results['huggingface_result'] = hf_data
+                results['sources_checked'].append('huggingface_datasets')
+                
+                if hf_data and hf_data.get('found_in_datasets'):
+                    results['aggregated_assessment']['analysis_sources'].append('huggingface_datasets')
+                    
+                    # Malicious contract flags indicate criminal activity
+                    if 'malicious_smart_contracts' in hf_data.get('found_in_datasets', []):
+                        results['criminal_activity_found'] = True
+                
+            except Exception as e:
+                self.logger.error("HuggingFace datasets lookup failed", error=str(e))
         
         # Calculate aggregated assessment
         self._calculate_address_assessment(results)
