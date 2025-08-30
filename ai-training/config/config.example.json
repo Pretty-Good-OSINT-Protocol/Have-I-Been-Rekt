@@ -1,0 +1,115 @@
+{
+  "api_keys": {
+    "chainalysis": "your_chainalysis_api_key_here",
+    "haveibeenpwned": "your_hibp_api_key_here",
+    "virustotal": "your_virustotal_api_key_here",
+    "etherscan": "your_etherscan_api_key_here",
+    "bscscan": "your_bscscan_api_key_here",
+    "infura": "your_infura_project_id_here",
+    "alchemy": "your_alchemy_api_key_here"
+  },
+  
+  "rate_limits": {
+    "chainalysis": {
+      "calls_per_minute": 100,
+      "burst_limit": 10
+    },
+    "cryptoscamdb": {
+      "calls_per_minute": 60,
+      "burst_limit": 5
+    },
+    "haveibeenpwned": {
+      "calls_per_minute": 10,
+      "burst_limit": 2
+    },
+    "chainabuse": {
+      "calls_per_minute": 30,
+      "burst_limit": 3
+    },
+    "virustotal": {
+      "calls_per_minute": 15,
+      "burst_limit": 4
+    },
+    "etherscan": {
+      "calls_per_minute": 200,
+      "burst_limit": 20
+    }
+  },
+  
+  "cache": {
+    "enabled": true,
+    "ttl_hours": 24,
+    "max_size_mb": 500,
+    "directory": "./data/cache"
+  },
+  
+  "data_sources": {
+    "ofac_sanctions": {
+      "enabled": true,
+      "update_interval_hours": 24,
+      "url": "https://www.treasury.gov/ofac/downloads/sanctions/1.0/sdn_advanced.xml"
+    },
+    "cryptoscamdb": {
+      "enabled": true,
+      "github_repo": "CryptoScamDB/api",
+      "update_interval_hours": 6
+    },
+    "chainabuse": {
+      "enabled": true,
+      "base_url": "https://www.chainabuse.com",
+      "respect_robots": true
+    },
+    "scamsearch": {
+      "enabled": false,
+      "base_url": "https://scamsearch.io/api",
+      "requires_subscription": true
+    },
+    "honeypot_is": {
+      "enabled": true,
+      "base_url": "https://api.honeypot.is/v1",
+      "free_tier": true
+    },
+    "graphsense": {
+      "enabled": true,
+      "tagpacks_repo": "graphsense/graphsense-tagpacks",
+      "update_interval_hours": 168
+    }
+  },
+  
+  "logging": {
+    "level": "INFO",
+    "format": "structured",
+    "file": "./logs/collector.log",
+    "max_size_mb": 100,
+    "backup_count": 5
+  },
+  
+  "database": {
+    "type": "local_files",
+    "parquet_compression": "snappy",
+    "backup_enabled": true
+  },
+  
+  "ml_training": {
+    "test_split": 0.2,
+    "validation_split": 0.1,
+    "random_seed": 42,
+    "cross_validation_folds": 5
+  },
+  
+  "risk_scoring": {
+    "weights": {
+      "sanctions": 1.0,
+      "scam_reports": 0.7,
+      "honeypot_interaction": 0.8,
+      "mixer_usage": 0.3,
+      "breach_exposure": 0.2
+    },
+    "thresholds": {
+      "critical": 0.8,
+      "high": 0.6,
+      "medium": 0.4,
+      "low": 0.2
+    }
+  }
+}

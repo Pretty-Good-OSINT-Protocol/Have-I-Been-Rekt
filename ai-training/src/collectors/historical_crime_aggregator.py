@@ -20,6 +20,8 @@ from .hibp_client import HIBPClient
 from .ransomwhere_processor import RansomwhereProcessor
 from .elliptic_dataset_processor import EllipticDatasetProcessor
 from .virustotal_client import VirusTotalClient
+from .dehashed_client import DeHashedClient
+from .shodan_client import ShodanClient
 
 
 class HistoricalCrimeAggregator(BaseDataCollector, LoggingMixin):
@@ -37,6 +39,8 @@ class HistoricalCrimeAggregator(BaseDataCollector, LoggingMixin):
         self.ransomware_processor = RansomwhereProcessor(config, cache_dir, logger)
         self.elliptic_processor = EllipticDatasetProcessor(config, cache_dir, logger)
         self.virustotal_client = VirusTotalClient(config, cache_dir, logger)
+        self.dehashed_client = DeHashedClient(config, cache_dir, logger)
+        self.shodan_client = ShodanClient(config, cache_dir, logger)
         
         # Track available sources
         self.available_sources = self._check_available_sources()
@@ -73,6 +77,14 @@ class HistoricalCrimeAggregator(BaseDataCollector, LoggingMixin):
         if self.virustotal_client.api_key:
             sources.add('virustotal')
         
+        # DeHashed requires API key
+        if self.dehashed_client.is_configured():
+            sources.add('dehashed')
+        
+        # Shodan requires API key
+        if self.shodan_client.is_configured():
+            sources.add('shodan')
+        
         return sources
     
     def collect_email_intelligence(self, email: str) -> Optional[Dict[str, Any]]:
@@ -83,6 +95,7 @@ class HistoricalCrimeAggregator(BaseDataCollector, LoggingMixin):
             'sources_checked': [],
             'breach_exposure_found': False,
             'hibp_result': None,
+            'dehashed_result': None,
             'aggregated_assessment': {
                 'is_compromised': False,
                 'breach_count': 0,
@@ -109,6 +122,22 @@ class HistoricalCrimeAggregator(BaseDataCollector, LoggingMixin):
             except Exception as e:
                 self.logger.error("HIBP breach check failed", error=str(e))
         
+        # Collect DeHashed data
+        if 'dehashed' in self.available_sources:
+            try:
+                dehashed_data = self.dehashed_client.lookup_address(email)
+                results['dehashed_result'] = dehashed_data
+                results['sources_checked'].append('dehashed')
+                
+                if dehashed_data and dehashed_data.get('found_dehashed_data'):
+                    results['aggregated_assessment']['analysis_sources'].append('dehashed')
+                    
+                    if dehashed_data.get('total_records', 0) > 0:
+                        results['breach_exposure_found'] = True
+                        
+            except Exception as e:
+                self.logger.error("DeHashed breach check failed", error=str(e))
+        
         # Calculate aggregated assessment
         self._calculate_email_assessment(results)
         
@@ -124,6 +153,7 @@ class HistoricalCrimeAggregator(BaseDataCollector, LoggingMixin):
             'ransomware_result': None,
             'elliptic_result': None,
             'virustotal_result': None,
+            'shodan_result': None,
             'aggregated_assessment': {
                 'is_criminal_address': False,
                 'criminal_activities': [],
@@ -181,6 +211,30 @@ class HistoricalCrimeAggregator(BaseDataCollector, LoggingMixin):
                         
             except Exception as e:
                 self.logger.error("VirusTotal lookup failed", error=str(e))
+        
+        # Collect Shodan infrastructure data (if address looks like IP/domain)
+        if 'shodan' in self.available_sources:
+            try:
+                # Check if address might be an IP or domain for infrastructure analysis
+                import re
+                ip_pattern = r'^(\d{1,3}\.){3}\d{1,3}$'
+                domain_pattern = r'^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$'
+                
+                if re.match(ip_pattern, address) or re.match(domain_pattern, address):
+                    shodan_data = self.shodan_client.lookup_address(address)
+                    results['shodan_result'] = shodan_data
+                    results['sources_checked'].append('shodan')
+                    
+                    if shodan_data and shodan_data.get('found_shodan_data'):
+                        results['aggregated_assessment']['analysis_sources'].append('shodan')
+                        
+                        # Infrastructure findings might indicate suspicious activity
+                        infra_intel = shodan_data.get('infrastructure_intelligence', {})
+                        if infra_intel.get('suspicious_indicators') or infra_intel.get('vulnerability_count', 0) > 5:
+                            results['criminal_activity_found'] = True
+                
+            except Exception as e:
+                self.logger.error("Shodan infrastructure lookup failed", error=str(e))
         
         # Calculate aggregated assessment
         self._calculate_address_assessment(results)
