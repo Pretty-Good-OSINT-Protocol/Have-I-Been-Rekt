@@ -1,0 +1,6 @@
+ai-training/aws/
+ai-training/awscliv2.zip
+ai-training/venv/
+ai-training/.env
+*.env
+**/*.env
