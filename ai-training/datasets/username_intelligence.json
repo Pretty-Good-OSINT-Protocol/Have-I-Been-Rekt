@@ -1,0 +1,44 @@
+[
+  {
+    "username": "@crypto_king_2024",
+    "platform_presence": [],
+    "scam_reports": [
+      {
+        "pattern": "crypto_king",
+        "risk_level": "high",
+        "reason": "Username matches common scammer pattern: crypto_king"
+      }
+    ],
+    "associated_addresses": []
+  },
+  {
+    "username": "@binance_official_help",
+    "platform_presence": [],
+    "scam_reports": [
+      {
+        "pattern": "binance_official",
+        "risk_level": "high",
+        "reason": "Username matches common scammer pattern: binance_official"
+      }
+    ],
+    "associated_addresses": []
+  },
+  {
+    "username": "@metamask_support_team",
+    "platform_presence": [],
+    "scam_reports": [],
+    "associated_addresses": []
+  },
+  {
+    "username": "admin_quick_profits",
+    "platform_presence": [],
+    "scam_reports": [
+      {
+        "pattern": "quick_profit",
+        "risk_level": "high",
+        "reason": "Username matches common scammer pattern: quick_profit"
+      }
+    ],
+    "associated_addresses": []
+  }
+]

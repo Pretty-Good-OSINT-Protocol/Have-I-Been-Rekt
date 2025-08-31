@@ -1,0 +1,243 @@
+[
+  {
+    "type": "blockchain_intelligence",
+    "data": {
+      "address": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb6",
+      "risk_indicators": [],
+      "network_analysis": {},
+      "transaction_patterns": {}
+    },
+    "timestamp": 1756604167
+  },
+  {
+    "type": "blockchain_intelligence",
+    "data": {
+      "address": "0x00009277775ac7d0d59eaad8fee3d10ac6c805e8",
+      "risk_indicators": [],
+      "network_analysis": {},
+      "transaction_patterns": {}
+    },
+    "timestamp": 1756604167
+  },
+  {
+    "type": "username_intelligence",
+    "data": {
+      "username": "@crypto_king_2024",
+      "platform_presence": [],
+      "scam_reports": [
+        {
+          "pattern": "crypto_king",
+          "risk_level": "high",
+          "reason": "Username matches common scammer pattern: crypto_king"
+        }
+      ],
+      "associated_addresses": []
+    },
+    "timestamp": 1756604167
+  },
+  {
+    "type": "username_intelligence",
+    "data": {
+      "username": "@binance_official_help",
+      "platform_presence": [],
+      "scam_reports": [
+        {
+          "pattern": "binance_official",
+          "risk_level": "high",
+          "reason": "Username matches common scammer pattern: binance_official"
+        }
+      ],
+      "associated_addresses": []
+    },
+    "timestamp": 1756604167
+  },
+  {
+    "type": "username_intelligence",
+    "data": {
+      "username": "@metamask_support_team",
+      "platform_presence": [],
+      "scam_reports": [],
+      "associated_addresses": []
+    },
+    "timestamp": 1756604167
+  },
+  {
+    "type": "username_intelligence",
+    "data": {
+      "username": "admin_quick_profits",
+      "platform_presence": [],
+      "scam_reports": [
+        {
+          "pattern": "quick_profit",
+          "risk_level": "high",
+          "reason": "Username matches common scammer pattern: quick_profit"
+        }
+      ],
+      "associated_addresses": []
+    },
+    "timestamp": 1756604167
+  },
+  {
+    "type": "domain_intelligence",
+    "data": {
+      "domain": "fake-binance.org",
+      "reputation_score": 0.0,
+      "threat_categories": [],
+      "infrastructure_details": {
+        "ip_addresses": [
+          null
+        ],
+        "hosting_info": "resolved"
+      },
+      "phishing_indicators": [
+        {
+          "type": "pattern_1",
+          "description": "Suspicious domain pattern detected"
+        }
+      ]
+    },
+    "timestamp": 1756604167
+  },
+  {
+    "type": "domain_intelligence",
+    "data": {
+      "domain": "metamask-help.com",
+      "reputation_score": 0.0,
+      "threat_categories": [],
+      "infrastructure_details": {
+        "ip_addresses": [
+          null
+        ],
+        "hosting_info": "resolved"
+      },
+      "phishing_indicators": [
+        {
+          "type": "pattern_2",
+          "description": "Suspicious domain pattern detected"
+        },
+        {
+          "type": "pattern_4",
+          "description": "Suspicious domain pattern detected"
+        }
+      ]
+    },
+    "timestamp": 1756604167
+  },
+  {
+    "type": "domain_intelligence",
+    "data": {
+      "domain": "uniswap-defi.net",
+      "reputation_score": 0.0,
+      "threat_categories": [],
+      "infrastructure_details": {
+        "ip_addresses": [
+          null
+        ],
+        "hosting_info": "resolved"
+      },
+      "phishing_indicators": [
+        {
+          "type": "pattern_3",
+          "description": "Suspicious domain pattern detected"
+        }
+      ]
+    },
+    "timestamp": 1756604167
+  },
+  {
+    "type": "domain_intelligence",
+    "data": {
+      "domain": "crypto-moonshot.tk",
+      "reputation_score": 0.0,
+      "threat_categories": [],
+      "infrastructure_details": {
+        "ip_addresses": [
+          null
+        ],
+        "hosting_info": "resolved"
+      },
+      "phishing_indicators": [
+        {
+          "type": "pattern_6",
+          "description": "Suspicious domain pattern detected"
+        }
+      ]
+    },
+    "timestamp": 1756604167
+  },
+  {
+    "type": "email_intelligence",
+    "data": {
+      "email": "support@fake-binance.org",
+      "breach_history": [],
+      "domain_reputation": {
+        "domain": "fake-binance.org",
+        "reputation_score": 0.0,
+        "threat_categories": [],
+        "infrastructure_details": {
+          "ip_addresses": [
+            null
+          ],
+          "hosting_info": "resolved"
+        },
+        "phishing_indicators": [
+          {
+            "type": "pattern_1",
+            "description": "Suspicious domain pattern detected"
+          }
+        ]
+      },
+      "risk_indicators": []
+    },
+    "timestamp": 1756604167
+  },
+  {
+    "type": "email_intelligence",
+    "data": {
+      "email": "admin@crypto-profits.com",
+      "breach_history": [],
+      "domain_reputation": {
+        "domain": "crypto-profits.com",
+        "reputation_score": 0.0,
+        "threat_categories": [],
+        "infrastructure_details": {
+          "ip_addresses": [
+            "13.248.169.48"
+          ],
+          "hosting_info": "resolved"
+        },
+        "phishing_indicators": []
+      },
+      "risk_indicators": [
+        "suspicious_pattern"
+      ]
+    },
+    "timestamp": 1756604167
+  },
+  {
+    "type": "email_intelligence",
+    "data": {
+      "email": "help@metamask-support.com",
+      "breach_history": [],
+      "domain_reputation": {
+        "domain": "metamask-support.com",
+        "reputation_score": 0.0,
+        "threat_categories": [],
+        "infrastructure_details": {
+          "ip_addresses": [
+            null
+          ],
+          "hosting_info": "resolved"
+        },
+        "phishing_indicators": [
+          {
+            "type": "pattern_2",
+            "description": "Suspicious domain pattern detected"
+          }
+        ]
+      },
+      "risk_indicators": []
+    },
+    "timestamp": 1756604167
+  }
+]

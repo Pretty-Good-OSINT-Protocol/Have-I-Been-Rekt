@@ -1,0 +1,74 @@
+[
+  {
+    "domain": "fake-binance.org",
+    "reputation_score": 0.0,
+    "threat_categories": [],
+    "infrastructure_details": {
+      "ip_addresses": [
+        null
+      ],
+      "hosting_info": "resolved"
+    },
+    "phishing_indicators": [
+      {
+        "type": "pattern_1",
+        "description": "Suspicious domain pattern detected"
+      }
+    ]
+  },
+  {
+    "domain": "metamask-help.com",
+    "reputation_score": 0.0,
+    "threat_categories": [],
+    "infrastructure_details": {
+      "ip_addresses": [
+        null
+      ],
+      "hosting_info": "resolved"
+    },
+    "phishing_indicators": [
+      {
+        "type": "pattern_2",
+        "description": "Suspicious domain pattern detected"
+      },
+      {
+        "type": "pattern_4",
+        "description": "Suspicious domain pattern detected"
+      }
+    ]
+  },
+  {
+    "domain": "uniswap-defi.net",
+    "reputation_score": 0.0,
+    "threat_categories": [],
+    "infrastructure_details": {
+      "ip_addresses": [
+        null
+      ],
+      "hosting_info": "resolved"
+    },
+    "phishing_indicators": [
+      {
+        "type": "pattern_3",
+        "description": "Suspicious domain pattern detected"
+      }
+    ]
+  },
+  {
+    "domain": "crypto-moonshot.tk",
+    "reputation_score": 0.0,
+    "threat_categories": [],
+    "infrastructure_details": {
+      "ip_addresses": [
+        null
+      ],
+      "hosting_info": "resolved"
+    },
+    "phishing_indicators": [
+      {
+        "type": "pattern_6",
+        "description": "Suspicious domain pattern detected"
+      }
+    ]
+  }
+]

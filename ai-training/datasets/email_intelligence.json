@@ -1,0 +1,65 @@
+[
+  {
+    "email": "support@fake-binance.org",
+    "breach_history": [],
+    "domain_reputation": {
+      "domain": "fake-binance.org",
+      "reputation_score": 0.0,
+      "threat_categories": [],
+      "infrastructure_details": {
+        "ip_addresses": [
+          null
+        ],
+        "hosting_info": "resolved"
+      },
+      "phishing_indicators": [
+        {
+          "type": "pattern_1",
+          "description": "Suspicious domain pattern detected"
+        }
+      ]
+    },
+    "risk_indicators": []
+  },
+  {
+    "email": "admin@crypto-profits.com",
+    "breach_history": [],
+    "domain_reputation": {
+      "domain": "crypto-profits.com",
+      "reputation_score": 0.0,
+      "threat_categories": [],
+      "infrastructure_details": {
+        "ip_addresses": [
+          "13.248.169.48"
+        ],
+        "hosting_info": "resolved"
+      },
+      "phishing_indicators": []
+    },
+    "risk_indicators": [
+      "suspicious_pattern"
+    ]
+  },
+  {
+    "email": "help@metamask-support.com",
+    "breach_history": [],
+    "domain_reputation": {
+      "domain": "metamask-support.com",
+      "reputation_score": 0.0,
+      "threat_categories": [],
+      "infrastructure_details": {
+        "ip_addresses": [
+          null
+        ],
+        "hosting_info": "resolved"
+      },
+      "phishing_indicators": [
+        {
+          "type": "pattern_2",
+          "description": "Suspicious domain pattern detected"
+        }
+      ]
+    },
+    "risk_indicators": []
+  }
+]

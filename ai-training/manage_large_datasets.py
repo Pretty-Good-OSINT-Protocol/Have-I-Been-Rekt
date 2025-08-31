@@ -251,7 +251,7 @@ Examples:
     })
     
     # Initialize manager
-    logger = setup_logging(log_level="INFO")
+    logger = setup_logging({"level": "INFO", "format": "simple"})
     manager = CloudDatasetManager(config, logger=logger)
     
     # Execute requested action
