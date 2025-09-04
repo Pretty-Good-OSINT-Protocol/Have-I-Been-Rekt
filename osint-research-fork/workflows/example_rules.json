@@ -1,0 +1,103 @@
+[
+  {
+    "name": "email_to_domain_pivot",
+    "description": "Extract domain from email addresses and create domain targets",
+    "priority": 10,
+    "conditions": [
+      {
+        "field": "data_type",
+        "operator": "equals",
+        "value": "EMAIL_ADDRESS"
+      }
+    ],
+    "actions": [
+      {
+        "type": "extract_data",
+        "config": {
+          "source_field": "data_value",
+          "extractor": "email_domain",
+          "target_variable": "extracted_domain"
+        }
+      },
+      {
+        "type": "create_target",
+        "config": {
+          "value": "$extracted_domain",
+          "type": "DOMAIN_NAME",
+          "source": "email_domain_extraction"
+        }
+      }
+    ]
+  },
+  {
+    "name": "social_username_extraction",
+    "description": "Extract usernames from social media URLs",
+    "priority": 20,
+    "conditions": [
+      {
+        "field": "data_type",
+        "operator": "equals",
+        "value": "LINKED_URL_EXTERNAL"
+      },
+      {
+        "field": "data_value",
+        "operator": "contains",
+        "value": "twitter.com"
+      }
+    ],
+    "actions": [
+      {
+        "type": "extract_data",
+        "config": {
+          "source_field": "data_value",
+          "extractor": "username_from_url",
+          "target_variable": "social_username"
+        }
+      },
+      {
+        "type": "create_target",
+        "config": {
+          "value": "$social_username",
+          "type": "USERNAME",
+          "source": "social_media_extraction"
+        }
+      }
+    ]
+  },
+  {
+    "name": "high_confidence_pivot",
+    "description": "Create additional targets for high-confidence findings",
+    "priority": 30,
+    "conditions": [
+      {
+        "field": "confidence",
+        "operator": "greater_than",
+        "value": 80
+      },
+      {
+        "field": "data_type",
+        "operator": "in_list",
+        "value": [
+          "DOMAIN_NAME",
+          "IP_ADDRESS"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "type": "trigger_scan",
+        "config": {
+          "scan_type": "deep_infrastructure",
+          "target_variable": "data_value"
+        }
+      },
+      {
+        "type": "set_variable",
+        "config": {
+          "variable": "high_confidence_target",
+          "value": "$data_value"
+        }
+      }
+    ]
+  }
+]

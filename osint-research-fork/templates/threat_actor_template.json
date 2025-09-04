@@ -1,0 +1,87 @@
+{
+  "name": "threat_actor_investigation",
+  "description": "Comprehensive threat actor investigation form",
+  "version": "1.0",
+  "workflow_config": {
+    "max_depth": 3,
+    "auto_pivot": true,
+    "report_format": "comprehensive"
+  },
+  "fields": [
+    {
+      "name": "target_email",
+      "label": "Target Email Address",
+      "type": "email",
+      "required": true,
+      "description": "Primary email address to investigate",
+      "auto_fill_sources": ["email_addresses"],
+      "pivot_triggers": ["domain_extraction", "breach_check"]
+    },
+    {
+      "name": "target_domain",
+      "label": "Target Domain",
+      "type": "text",
+      "required": false,
+      "description": "Domain associated with the threat actor",
+      "auto_fill_sources": ["domain_names"],
+      "pivot_triggers": ["subdomain_enumeration", "infrastructure_mapping"]
+    },
+    {
+      "name": "associated_domains",
+      "label": "Associated Domains",
+      "type": "multi_select",
+      "description": "Domains associated with the target",
+      "auto_fill_sources": ["domain_names"],
+      "pivot_triggers": ["subdomain_enumeration"]
+    },
+    {
+      "name": "social_media_profiles",
+      "label": "Social Media Profiles",
+      "type": "textarea",
+      "description": "Discovered social media profiles",
+      "auto_fill_sources": ["social_media_urls"]
+    },
+    {
+      "name": "phone_numbers",
+      "label": "Phone Numbers",
+      "type": "textarea",
+      "description": "Associated phone numbers",
+      "auto_fill_sources": ["phone_numbers"]
+    },
+    {
+      "name": "ip_addresses",
+      "label": "IP Addresses",
+      "type": "textarea",
+      "description": "Infrastructure IP addresses",
+      "auto_fill_sources": ["ip_addresses"]
+    },
+    {
+      "name": "technologies_used",
+      "label": "Technologies Identified",
+      "type": "multi_select",
+      "description": "Software and technologies in use",
+      "auto_fill_sources": ["technologies"]
+    },
+    {
+      "name": "breach_data",
+      "label": "Breach Exposures",
+      "type": "textarea",
+      "description": "Data breach exposures found",
+      "auto_fill_sources": ["breach_data"]
+    },
+    {
+      "name": "certificates",
+      "label": "SSL Certificates",
+      "type": "textarea", 
+      "description": "SSL certificate information",
+      "auto_fill_sources": ["certificates"]
+    },
+    {
+      "name": "malware_indicators",
+      "label": "Malware Indicators",
+      "type": "textarea",
+      "description": "Malware and suspicious activity indicators",
+      "auto_fill_sources": ["malware_indicators"]
+    }
+  ]
+}

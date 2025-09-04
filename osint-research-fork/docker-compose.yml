@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  spiderfoot:
+    image: spiderfoot/spiderfoot:latest
+    container_name: pgop_spiderfoot
+    ports:
+      - "5001:5001"
+    volumes:
+      - spiderfoot_data:/var/lib/spiderfoot
+    environment:
+      - SF_LISTEN_ADDRESS=0.0.0.0
+      - SF_LISTEN_PORT=5001
+    restart: unless-stopped
+    
+  pgop-osint:
+    build: .
+    container_name: pgop_osint_platform
+    ports:
+      - "5000:5000"
+    depends_on:
+      - spiderfoot
+    volumes:
+      - ./templates:/app/templates
+      - ./reports:/app/reports
+      - ./workflows:/app/workflows
+    environment:
+      - SPIDERFOOT_URL=http://spiderfoot:5001
+      - FLASK_ENV=production
+      - FLASK_DEBUG=False
+    restart: unless-stopped
+
+volumes:
+  spiderfoot_data:
